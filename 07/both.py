@@ -7,13 +7,13 @@ with open('input.txt', 'r') as f:
     for line in f:
         key, values = line.strip().split(' contain ')
         key = key[:-4] 
-        values = values[:-1]
-        values = [' '.join(v.split(' ')[:-1]) for v in values.split(', ')]
-        values = {v[2:].strip() : int(v[0]) for v in values if v != 'no other'}
+        values = [' '.join(v.split(' ')[:-1]) for v in values[:-1].split(', ')]
+        values = {v[2:].strip(): int(v[0]) for v in values if v != 'no other'}
         forward_map[key.strip()] = values
         for k, v in values.items():
             backward_map[k.strip()].append(key.strip())
 
+# part 1
 seen = set()
 to_consider = {'shiny gold'}
 while to_consider:
@@ -22,7 +22,6 @@ while to_consider:
     for v in backward_map[value]:
         if v not in seen:
             to_consider.add(v)
-# part 1
 print(len(seen)-1)
 
 # part 2
