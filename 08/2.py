@@ -16,16 +16,16 @@ def accumulate(instructions):
             return accumulator
     return False
 
-def possible_instructions(instructions, jmp_locs, nop_locs):
-    yield instructions
+def possible_instructions(ins, jmp_locs, nop_locs):
+    yield ins
     for jmp_loc in jmp_locs:
-        tmp_instructions = [i.copy() for i in instructions]
-        tmp_instructions[jmp_loc][0] = 'nop'
-        yield tmp_instructions
+        tmp_ins = ins[:jmp_loc] + [ins[jmp_loc].copy()] + ins[jmp_loc+1:]
+        tmp_ins[jmp_loc][0] = 'nop'
+        yield tmp_ins
     for nop_loc in nop_locs:
-        tmp_instructions = [i.copy() for i in instructions]
-        tmp_instructions[nop_loc][0] = 'jmp'
-        yield tmp_instructions
+        tmp_ins = ins[:nop_loc] + [ins[nop_loc].copy()] + ins[nop_loc+1:]
+        tmp_ins[nop_loc][0] = 'jmp'
+        yield tmp_ins
 
 instructions = list()
 jmp_locs = set()
