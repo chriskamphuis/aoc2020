@@ -12,6 +12,8 @@ while True:
     number = next(numbers)
     for n in seen:
         if number - n in seen:
+            to_remove = seen_in_order[-25]
+            seen.remove(to_remove)
             seen.add(number)
             seen_in_order.append(number)
             break
