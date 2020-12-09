@@ -24,15 +24,14 @@ while True:
 
 start = 0
 end = 0
-while True:
-    value = 0
-    end = start
-    while value < sol1:
-        value += seen_in_order[end]
+score = seen_in_order[0]
+while score != sol1:
+    if score < sol1:
         end += 1
-    if value == sol1:
-        break
-    start += 1
+        score += seen_in_order[end]
+    if score > sol1:
+        score -= seen_in_order[start]
+        start += 1
 
 contiguous = {x for x in seen_in_order[start:end]}
 print(min(contiguous) + max(contiguous))
