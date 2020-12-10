@@ -5,18 +5,17 @@ last = pivot = 0
 ordered = []
 numbers_paths_map[0] = 1
 
-while numbers:
+while len(numbers) != len(ordered):
     ordered.append(pivot)
     for value in [1, 2, 3]:
         if pivot+value in numbers:
-            numbers.remove(pivot+value)
             pivot += value
             break
 
-for i, value in enumerate(ordered):
+for value in ordered:
     for j in [1, 2, 3]:
-        if value+j in numbers_paths_map.keys():
-            numbers_paths_map[value+j] += numbers_paths_map[ordered[i]]
+        if value+j in numbers:
+            numbers_paths_map[value+j] += numbers_paths_map[value]
             last = numbers_paths_map[value+j] 
 
 print(last)
