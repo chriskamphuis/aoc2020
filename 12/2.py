@@ -5,7 +5,6 @@ directions = [[1, 0], [0, -1], [-1, 0], [0, 1]]
 direction_map = {d:i for d, i in zip('ESWN', directions)}
 loc = [0, 0]
 
-
 for line in open('input.txt'):
     action = line[0]
     value = int(line[1:])
