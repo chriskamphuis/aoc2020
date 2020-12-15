@@ -4,7 +4,7 @@ numbers = [2020, 30000000]
 
 number_lsm = {e:i+1 for i, e in enumerate(puzzle_input)}
 previous_value = puzzle_input[-1]
-i = len(puzzle_input)+1
+i = len(puzzle_input)
 
 first_time = True
 for n in numbers: 
@@ -12,11 +12,11 @@ for n in numbers:
         if first_time:
             next_number = 0
         else:
-            next_number = (i-1) - number_lsm[previous_value]
-        number_lsm[previous_value] = i-1
+            next_number = i - number_lsm[previous_value]
+        number_lsm[previous_value] = i
         first_time = next_number not in number_lsm.keys()
         previous_value = next_number 
         i+=1
-        if i == n+1: 
+        if i == n: 
             print(f'{next_number}')
             break
