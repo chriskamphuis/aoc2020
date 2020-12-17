@@ -1,8 +1,5 @@
 import numpy as np
 
-from collections import defaultdict
-from scipy.ndimage import convolve
-
 store = set()
 min_x = min_y = min_z = max_z = min_w = max_w = 0
 with open('input.txt', 'r') as f:
