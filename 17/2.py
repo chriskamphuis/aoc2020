@@ -24,10 +24,10 @@ def neighbours(store, x, y, z, w):
 
 for iteration in range(1, 7):
     tmp_store = set()
-    for x in range(min_x - iteration-1, max_x + iteration+1):
-        for y in range(min_y - iteration-1, max_y + iteration+1):
-            for z in range(min_z - iteration-1, max_z + iteration+1):
-                for w in range(min_w - iteration-1, max_w + iteration+1):
+    for x in range(min_x - iteration, max_x + iteration+1):
+        for y in range(min_y - iteration, max_y + iteration+1):
+            for z in range(min_z - iteration, max_z + iteration+1):
+                for w in range(min_w - iteration, max_w + iteration+1):
                     n = neighbours(store, x, y, z, w)
                     if (x, y, z, w) in store and n in [2, 3]:
                         tmp_store.add((x, y, z, w))
