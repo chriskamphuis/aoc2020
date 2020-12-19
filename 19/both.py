@@ -17,7 +17,7 @@ def is_valid(rules, message):
         subs = head.split(' | ')
         return any([is_valid(s.split(' ') + tail, message) for s in subs])
     else:
-        return any([is_valid(head.split(' ') + tail, message)])
+        return is_valid(head.split(' ') + tail, message)
 
 print(len([1 for msg in messages if is_valid(["0"], msg)]))
 
