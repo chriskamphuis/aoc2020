@@ -19,17 +19,9 @@ def is_valid(rules, message):
     else:
         return any([is_valid(head.split(' ') + tail, message)])
 
-count = 0
-for msg in messages:
-    if is_valid(['0'], msg):
-        count+=1
-print(count)
+print(len([1 for msg in messages if is_valid(["0"], msg)]))
 
 cfg['8'] = '42 | 42 8'
 cfg['11'] = '42 31 | 42 11 31'
 
-count = 0
-for msg in messages:
-    if is_valid(['0'], msg):
-        count+=1
-print(count)
+print(len([1 for msg in messages if is_valid(["0"], msg)]))
