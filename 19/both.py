@@ -10,12 +10,11 @@ def is_valid(rules, message):
         return False
     head = cfg[rules[0]]
     tail = rules[1:]
-    if '"' in head:
+    if '"' in head: 
         return head[1] == message[0] and is_valid(tail, message[1:])
-    if '|' in head:
-        subs = head.split(' | ')
-        return any([is_valid(s.split(' ') + tail, message) for s in subs])
-    else:
+    elif '|' in head: 
+        return any([is_valid(s.split(' ') + tail, message) for s in head.split(' | ')])
+    else: 
         return is_valid(head.split(' ') + tail, message)
 
 print(len([1 for msg in messages if is_valid(["0"], msg)]))
