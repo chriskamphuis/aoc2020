@@ -11,7 +11,6 @@ def is_valid(rules, message):
     head = cfg[rules[0]]
     tail = rules[1:]
     if '"' in head:
-        letter = head[1]
         return head[1] == message[0] and is_valid(tail, message[1:])
     if '|' in head:
         subs = head.split(' | ')
