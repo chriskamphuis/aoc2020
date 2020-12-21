@@ -36,7 +36,6 @@ for all_ingredients in all_ingredients_list:
             count += 1
 # Part 1
 print(count)
-todo = {e for e in all_allergens}
 
 done = []
 while True:
