@@ -16,7 +16,6 @@ with open('input.txt', 'r') as f:
             allergen_ingredients_map[allergen].append(ingredients)
         all_ingredients_list.append(ingredients)
 
-valid = {i for i in all_ingredients}
 invalid = set()
 for allergen, ingredients in allergen_ingredients_map.items():
     start = set(ingredients[0])
@@ -26,7 +25,7 @@ for allergen, ingredients in allergen_ingredients_map.items():
         ingredients_allergen_map[ingredient].add(allergen) 
     invalid |= start
 
-valid ^= invalid
+valid = all_ingredients ^ invalid
 count = 0
 for all_ingredients in all_ingredients_list:
     for ingredient in all_ingredients:
@@ -45,7 +44,7 @@ while True:
     else:
         break
     del ingredients_allergen_map[k]
-    for k,v in ingredients_allergen_map.items():
+    for k, v in ingredients_allergen_map.items():
         v.discard(found)
 
 # Part 2
