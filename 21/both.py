@@ -47,7 +47,7 @@ while True:
     else:
         break
     del ingredients_allergen_map[k]
-    for k,v, in ingredients_allergen_map.items():
+    for k,v in ingredients_allergen_map.items():
         v.discard(found)
 
 # Part 2
