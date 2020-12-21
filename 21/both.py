@@ -25,11 +25,10 @@ for allergen, ingredients in allergen_ingredients_map.items():
         ingredients_allergen_map[ingredient].add(allergen) 
     invalid |= start
 
-valid = all_ingredients ^ invalid
 count = 0
 for all_ingredients in all_ingredients_list:
     for ingredient in all_ingredients:
-        if ingredient in valid:
+        if ingredient not in invalid:
             count += 1
 # Part 1
 print(count)
