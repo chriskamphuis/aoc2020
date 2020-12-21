@@ -4,7 +4,6 @@ allergen_ingredients_map = defaultdict(list)
 ingredients_allergen_map = defaultdict(set)
 all_ingredients = set()
 all_ingredients_list = list()
-all_allergens = set()
 
 with open('input.txt', 'r') as f:
     for line in f:
@@ -15,7 +14,6 @@ with open('input.txt', 'r') as f:
         all_ingredients |= set(ingredients)
         for allergen in allergens:
             allergen_ingredients_map[allergen].append(ingredients)
-            all_allergens.add(allergen)
         all_ingredients_list.append(ingredients)
 
 valid = {i for i in all_ingredients}
