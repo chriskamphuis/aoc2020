@@ -1,25 +1,19 @@
 import re, operator
 
 dirs = [(2, 0), (1, -1), (-1, -1), (-2, 0), (-1, 1), (1, 1)]
+dirs_map = {'e': (2, 0), 'se':(1, -1), 'sw': (-1, -1),
+            'w': (-2, 0), 'nw': (-1, 1), 'ne': (1, 1)}
 
-def update_location(tile, match):
-    if match == 'e': direction = (2, 0)
-    if match == 'se': direction = (1, -1)
-    if match == 'sw': direction = (-1, -1)
-    if match == 'w': direction = (-2, 0)
-    if match == 'nw': direction = (-1, 1)
-    if match == 'ne': direction = (1, 1)
-    return tuple(map(operator.add, tile, direction))
-
+update = lambda tile, match: tuple(map(operator.add, tile, dirs_map[match]))
 neighbours = lambda tile: [tuple(map(operator.add, tile, d)) for d in dirs]
-flipped = set()
 
+flipped = set()
 tiles = [line for line in open('input.txt').read().strip().split('\n')]
 for tile in tiles:
     loc = (0, 0)
     matches = re.findall(r'(e|se|sw|w|nw|ne)', tile)
     for match in matches:
-        loc = update_location(loc, match)
+        loc = update(loc, match)
     if loc not in flipped:
         flipped.add(loc)
     else:
